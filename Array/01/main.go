@@ -14,7 +14,7 @@
 
 //solution-01.
 
-package main
+/*package main
 
 import "fmt"
 
@@ -38,6 +38,38 @@ func twoSum(num []int, target int) []int {
 
 func main() {
 	fmt.Println("the result is: ")
+	num := []int{2, 7, 11, 15}
+	target := 9
+	fmt.Println(twoSum(num, target))
+}
+*/
+//solution-01.
+package main
+
+import "fmt"
+
+func twoSum(num []int, target int) []int {
+	numMap := make(map[int]int) // map will store the value
+	//iterate through the array
+	for i, num := range num {
+		complement := target - num // the result is stored in numMap
+		if j, ok := numMap[complement]; ok {
+			// this'll check the current element is present in the numMap
+			//as well as check make the comparison .
+			// aslo produce the true/false result
+			// according to this the next block is executed
+			return []int{i, j}
+		}
+		//if numMap is enpty or not prest in num then the element is added to numMap
+		numMap[num] = i
+
+	}
+	//if not found any any result return empty
+	//you can give specific msg here
+	return []int{}
+}
+func main() {
+	fmt.Println("another way to solve this problem")
 	num := []int{2, 7, 11, 15}
 	target := 9
 	fmt.Println(twoSum(num, target))
